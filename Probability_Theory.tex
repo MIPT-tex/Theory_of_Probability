@@ -1,0 +1,727 @@
+\input{preambule.tex}
+
+%##############################
+% \usepackage{wasysym} % ??? %#
+% \usepackage{upgreek} % ??? %#
+\usepackage{mathrsfs}        %#
+\usepackage{makecell}        %#
+%##############################
+
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n} 
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold} 
+
+\begin{document}
+\input{title.tex}
+\newpage
+\tableofcontents{} %содержание
+\newpage
+	
+\section{Билет №1. Определение сигма-алгебры подмножеств и измеримого пространства.}
+
+\hspace*{\parindent} \textbf{Определение}:  Пусть $\mathscr{A}$ — класс подмножеств $\Omega$, для которого выполняются следующие условия:
+\begin{enumerate}
+	\item $\Omega \in \mathscr{A}$
+	\item Если A $\in \mathscr{A} \Rightarrow \overline{A} \in \mathscr{A}$
+	\item Если $A_1, A_2, \ldots \in \mathscr{A} \Rightarrow  \bigcup\limits_{i = 1}^{\infty} {A_i} \in \mathscr{A}$ 
+\end{enumerate}
+Тогда $\mathscr{A}$ является сигма-алгеброй подмножеств $\Omega$.\\
+
+\textbf{Замечание}: Класс $\mathscr{A}$ замкнут относительно счетного множества операций.\\
+
+\textbf{Определение}: $\Omega$ -- некоторое непустое множество и $\mathscr{A}$ -- некоторая сигма-алгебра его подмножеств, тогда пару $(\Omega, \mathscr{A})$ называют \textit{измеримое пространство}.\\
+
+\section{Билет №2. Определение вероятности и вероятностного пространства.}
+
+\hspace*{\parindent} \textbf{Определение}: Пусть $(\Omega, \mathscr{A})$ -- измеримое пространство, тогда функция $\mathbb{P}$, определенная на сигма-алгебре $\mathscr{A}$ $\mathbb{P}$: $\mathscr{A} \longrightarrow \mathbb{R}_{+}$, которая удовлетворяет условиям:
+\begin{enumerate}
+	\item $\mathbb{P}$($\Omega$) = 1 (нормированность)
+	\item Если $A_1, A_2, \ldots \in \mathscr{A}$ и $A_i A_j = \varnothing$ при $i\neq j$, то $\mathbb{P}(\bigcup\limits_{i = 1}^{\infty} {A_i}) =  \sum\limits_{i = 1}^{\infty} {\mathbb{P}(A_i)}$ (аддитивность)
+\end{enumerate}
+называется вероятностью.\\
+
+\textbf{Определение}: тройка $(\Omega, \mathscr{A}, \mathbb{P})$, $\Omega$ -- непустое, $\mathscr{A}$ -- сигма-алгебра подмножеств $\Omega$,  $\mathbb{P}$: $\mathscr{A} \longrightarrow \mathbb{R}_{+}$ -- вероятность, определенная на $(\Omega, \mathscr{A})$, называется вероятностное пространство.\\
+
+\section{Билет №3. Свойства вероятности. Теорема сложения.}
+\hspace*{\parindent} \textbf{Свойства вероятности}:
+\begin{enumerate}
+	\item Если $A, B \in \mathscr{A}$ и $A \subseteq B$, то $\mathbb{P}(B \backslash A) = \mathbb{P}(B) - \mathbb{P}(A)$
+	\item $A \in \mathscr{A} \Rightarrow \mathbb{P}(\overline{A}) = 1 - \mathbb{P}(A),~0\leq \mathbb{P}(A)\leq 1$ 
+	\item $A, B \in \mathscr{A}$, то $\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A B)$
+\end{enumerate}
+
+\textbf{Теорема [сложения]}: пусть $A_1, \ldots, A_n$ -- события $\in \mathscr{A}$, тогда
+\begin{multline*}
+\mathbb{P}(\bigcup_{i = 1}^{n} {A_i}) =  \sum_{i = 1}^{n} {\mathbb{P}(A_i)} - \sum_{1\leq i_1 < i_2\leq n}^{} {\mathbb{P}(A_{i_1} A_{i_2})} + \\ +\sum_{1\leq i_1 < i_2 < i_3\leq n}^{} {\mathbb{P}(A_{i_1} A_{i_2} A_{i_3})} -{\dots} + (-1)^{n-1}\cdot \mathbb{P}(A_1\dots A_n)
+\end{multline*}
+
+\textbf{Предложение [Полуаддитивность]:} пусть $A_1, \ldots, A_n$ -- события $\in \mathscr{A}$, тогда
+\[\mathbb{P}(\bigcup_{i = 1}^{n} {A_i}) \leq  \sum_{i = 1}^{n} {\mathbb{P}(A_i)}\]
+
+\section{Билет №4. Условная вероятность и теорема умножения.}
+\hspace*{\parindent} \textbf{Определение}: Пусть $A$ и $B$ два события $\in \mathscr{A}$ и $\mathbb{P}(B)>0$. Тогда под \textit{условной вероятностью} события $A$ при условии $B$ будем понимать 
+$$ \mathbb{P}(A | B) = \dfrac{\mathbb{P}(A B)}{\mathbb{P}(B)}$$
+
+\textbf{Теорема (умножения)}: пусть $A_1, \ldots, A_n$ -- события $\in \mathscr{A}, \mathbb{P}(A_1\dots A_n)>0$. Тогда\\
+$$\mathbb{P}(A_1\dots A_n) = \mathbb{P}(A_1)\cdot \mathbb{P}(A_2|A_1)\cdot \mathbb{P}(A_3|A_1 A_2)\cdot {\dots} \cdot \mathbb{P}(A_n|A_1\dots A_{n-1})$$
+
+\section{Билет №5. Формула полной вероятности.}
+\hspace*{\parindent} \textbf{Теорема (Формула полной вероятности)}: Пусть $H_1,{\dots}, H_n \in \mathscr{A}: H_i H_j = \varnothing$ при $i\neq j$ и $\mathbb{P}(H_i)>0,~i = \overline{1,n}.~\sum\limits_{i = 1}^{n} {\mathbb{P}(H_i)} = 1$. Тогда $\forall A \in \mathscr{A}$:
+$$\mathbb{P}(A) = \sum_{i = 1}^{n} {\mathbb{P}(H_i)\cdot \mathbb{P}(A|H_i)}$$
+
+\textbf{Замечание}: $H_1,{\dots}, H_n$--полная группа событий (гипотезы).
+
+$\bigcup\limits_{i = 1}^{n} {H_i} = \Omega.~\mathbb{P}(H_i)$ -- \textit{априорные вероятности}, $\mathbb{P}(A)>0$.
+	
+\section{Билет №6. Формула Байеса.}
+
+\hspace*{\parindent} \textbf{Теорема [Формула Байеса]:} Пусть события $H_1, H_2, \dots, H_n$ такие что: $H_i H_j = \varnothing ~ \text{при} ~ i \neq j; ~ \forall i \rightarrow \mathbb{P}(H_i) > 0; ~ \sum\limits_{i = 1}^{n}{\mathbb{P}(H_i)} = 1$, событие $A \in \mathscr{A}$ и $P(A) > 0$, тода для $k = 1, 2, \ldots, n$ имеют место равенства:
+\begin{equation*}
+	\mathbb{P}(H_k | A) = \frac{\mathbb{P}(H_k) \mathbb{P}(A | H_k)}{\sum\limits_{i = 1}^{n} {\mathbb{P}(H_i) \mathbb{P}(A | H_i)}}
+\end{equation*}
+
+ \textbf{Комментарий:} Вероятности гипотез $\mathbb{P}(H_k)$ называют обычно \textit{априорными вероятностями}, а условные вероятности $\mathbb{P}(H_k|A)$ — \textit{апостериорными}. Таким образом, формула
+Байеса позволяет <<переоценить>> априорную вероятность гипотезы при наличии информации, что произошло событие $A$.
+
+\section{Билет №7. Свойство непрерывности вероятностной меры.}
+
+\[(\Omega, \mathscr{F}, \mathbb{P}) \hspace{2em} \{A_n\} \subset \mathscr{F} \hspace{1em}n=1, 2, \ldots \]
+
+$A^{*}$ -- произошло бесконечно много событий $A_n$
+
+$A_{*}$ -- произошли все события $A_n$, за исключением, быть может, конечного числа
+
+\[A^{*} = \bigcap_{n=1}^{\infty} \bigcup_{k \geqslant n} A_k := \varlimsup_{n \to \infty} A_n \]
+\[A_{*} = \bigcup_{n=1}^{\infty} \bigcap_{k \geqslant n} A_k := \varliminf_{n \to \infty} A_n \]
+
+\textbf{Теорема [Свойство непрерывности вероятностной меры]:} $(\Omega, \mathscr{F}, \mathbb{P})$ -- вероятностное пространство $\Rightarrow \forall$ монотонной последовательности $\{A_n\}$ $\mathbb{P}(\lim A_n) = \lim\limits_{n \to \infty} \mathbb{P}(A_n)$
+
+\section{Билет №8. Независимость событий.}
+
+\hspace*{\parindent} \textbf{Определение:} $A, B \in \mathscr{F}$ независимы, если
+\[ \mathbb{P}(AB) = \mathbb{P}(A) \mathbb{P}(B) \]
+
+\textbf{Определение:} Семейство событий $\{A_i\}_{i \in I}$ называется независимым (в совокупности), если $\forall$ конечного подмножества индексов $I_0 \subset I$
+\[\mathbb{P}(\bigcap_{i \in I_0}A_i) = \prod_{i \in I_0} \mathbb{P}(A_i)\]
+
+\textbf{Замечание:} заметим, что из попарной независимости событий не следует, вообще говоря, независимость в совокупности. Кроме того, при проверке независимости
+в совокупности не достаточно ограничиться проверкой лишь самых длинных
+цепочек в равенстве. 
+
+\section{Билет №9. Схема Бернулли.}
+
+\hspace*{\parindent} Допустим, что проводится серия из $n$ независимых испытаний, в каждом из которых с вероятностью $0 < p < 1$, может наступить
+и с вероятностью $q = 1 - p$ может не наступить некоторое событие $A$. Пусть событие $B_n (k)$, заключается в том, что в проведенной серии испытаний событие $A$ произошло $k$ раз, $k = 0, 1, \dots, n$, тогда вероятность этого события вычисляется по формуле:
+\begin{equation*}
+	\mathbb{P}(B_n (k)) = C_{n}^{k} p^k q^{n - k}
+\end{equation*}
+
+\textbf{Замечание:} События $B_n(k)$, $k = 0, 1, \dots , n$, образуют разбиение. Это подтверждается равенством
+\[ \sum_{k = 0}^{n}{\mathbb{P}(B_n(k))} = \sum_{k = 0}^{n}{C_{n}^{k} p^k q^{n - k}} = (p + q)^n = 1 \]
+Формула для $\mathbb{P}(B_n(k))$ выражает распределение вероятностей числа успехов в $n$ независимых испытаниях. Это распределение называют \textit{биномиальным}.
+
+\section{Билет №10. Теорема Пуассона для Схемы Бернулли.}
+
+\hspace*{\parindent} При больших значениях $n$ реализация формулы для схемы Бернулли сопряжена с трудоемкими вычислениями. Поэтому ее пытаются заменить приближенными формулами. Следующий результат относится к случаю, когда $p$ мало, а $n$ велико. В связи с малостью $p$ этот результат иногда называют \textit{законом редких событий}.\\
+
+\textbf{Теорема [Пуассона для схемы Бернулли]:} Если $n \rightarrow \infty$ и $p \rightarrow 0$ так, что $np \rightarrow \lambda$, $0 < \lambda < \infty$, то при всех $k = 0, 1, 2, \dots $ выполняется соотношение:
+\begin{equation*}
+	\mathbb{P}(B_n (k)) = C_{n}^{k} p^k q^{n - k} \rightarrow \frac{\lambda^k}{k!}e^{- \lambda}
+\end{equation*}
+
+\textbf{Замечание:} Доказанная теорема относится к так называемым предельным теоремам в схеме Бернулли. Распределение вероятностей
+\[ p_k = \frac{\lambda^k}{k!}e^{- \lambda} \]
+к которому стремится в условиях теоремы биномиальное распределение, называют \textit{пуассоновским распределением}.
+
+\section{Билет №11. Полиномиальная схема.}
+
+\hspace*{\parindent} \textit{Полиномиальная схема} является обобщением схемы Бернулли. Здесь результатом каждого испытания может быть один из $r$ взаимоисключающих исходов $A_1, \dots, A_r$ с вероятностями появления $p_1, \dots, p_r$, соответственно, $p_1 + \dots + p_r = 1$.\\
+
+Подобно событию $B_n(k)$, которое рассматривалось в схеме Бернулли, в полиномиальной схеме вводится событие $B_n(k_1, \dots, k_r)$, состоящее в том, что в серии из $n$ экспериментов произошло $k_1$ исходов с номером 1, $\dots$ , $k_r$ исходов с номером $r$, $k_1 + \dots+ k_r = n$. Вероятность такого события расчитывается по формуле:
+\begin{equation*}
+	\mathbb{P}(B_n(k_1, \dots, k_r)) = \frac{n!}{k_1! \dots k_r!}p_1^{k_1} \dots p_r^{k_r}
+\end{equation*}
+
+\section{Билет №12. Лемма Бореля-Кантелли.}
+
+\hspace{\parindent}\textbf{Лемма [Бореля-Кантелли]:} Пусть $A_1, A_2, \ldots$ — последовательность событий. Тогда имеют место следующие утверждения:
+\begin{enumerate}
+	\item Если $\sum\limits_{n = 1}^{\infty} {\mathbb{P}(A_n)} < \infty$, то $\mathbb{P}(\varlimsup{A_n}) = 0$
+	\item Если $\sum\limits_{n = 1}^{\infty} {\mathbb{P}(A_n)} = \infty$ и $\{A_n\}$ независимы, то $\mathbb{P}(\varlimsup{A_n}) = 1$
+\end{enumerate}	
+
+	\section{Билет №13. Дискретные случайные величины. Представление простой случайной величины индикаторами.}
+	\[(\Omega, \mathscr{F}, \mathbb{P}) \hspace{2em} \xi: \Omega \rightarrow \mathbb{R} \]
+	
+    \textbf{Определение:} $\xi$ называется дискретной случайной величиной, если $\xi(\Omega)$ -- конечное либо счётное подмножество $\mathbb{R}$ и $\{\omega: \xi(\omega) = x\} \in \mathscr{F}$ $\forall x \in \mathbb{R}$. $\xi(\Omega)$ конечно $\Rightarrow$ $\xi$ называется простой случайной величиной.
+    
+	 \indent Простейшей случайной величиной является индикатор события A $ \in \mathscr{F} $, который определяется равенством \\
+	 \[
+	 \mathbbold{1}_A(\omega) = \left\{ 
+	 \begin{aligned}
+	 	1, \quad \text{если} \quad \omega \in A, \\
+	 	0, \quad \text{если} \quad \omega \notin A. 
+	 \end{aligned}
+	 \right.
+	 \]
+	 
+	 Основные свойства индикаторов: \\ 
+	 \[ \mathbbold{1}_{\Omega}(\omega) \equiv 1, \quad \mathbbold{1}_{\varnothing}(\omega) \equiv 0, \quad \mathbbold{1}_{\overline{A}}(\omega) = 1 - \mathbbold{1}_A(\omega) 
+	 \]
+	 \[
+	 \mathbbold{1}_{\cap A_i} = \prod \mathbbold{1}_{A_i}, \quad \mathbbold{1}_{\cup A_i} = 1 - \mathbbold{1}_{\overline{\cup A_i}} = 1 - \mathbbold{1}_{\cap \overline{A_i}} = 1 - \prod (1 - \mathbbold{1}_{A_i})
+	 \]
+	 Пусть $\xi$ - случайная величина, принимающая значения $ x_1, ..., x_n$ соответственно на $D_1, ..., D_n,$ т.е. $\mathscr{D}_{\xi} = \{ D_1, ..., D_n \}.$ Тогда 
+	 \[
+	 \xi = \sum\limits_{i = 1}^n x_i \mathbbold{1}_{D_i}
+	 \]
+	 
+	\section{Билет №14. Определения и свойства математического ожидания простых случайных величин.}
+	\hspace{\parindent}\textbf{Определение:}
+	Пусть $\xi$ -- простая случайная величина, $\xi(\Omega) = \{x_1, \ldots, x_n\}$, $\mathbb{P}_{\xi}(x_i), i = 1, \ldots, n$ -- распределение вероятностей. Тогда под математическим ожиданием (средним) будем понимать
+	\[
+	\mathbb{E}\xi := \sum\limits_{i = 1}^n x_i \mathbb{P} (D_i) = \sum\limits_{i = 1}^n x_i \mathbb{P} (\xi = x_i)
+	\]
+	
+	\textbf{Замечание:}
+	Если случайная величина $\xi$, допускает представление 
+	\[
+	\xi = \sum\limits_{j = 1}^N y_i \mathbbold{1}_{H_i},
+	\]
+	где $ \{ H_1, ..., H_N\}$ - разбиение, а $y_1, ..., y_N$ не обязательно все различные то 
+	\[
+	\mathbb{E}\xi = \sum\limits_{j = 1}^N y_j \mathbb{P}(H_j)
+	\]
+	
+	\textbf{Свойства математического ожидания простых случайных величин.}
+	\begin{enumerate}
+	    \item $\mathbb{E} \mathbbold{1}_A = \mathbb{P}(A)$
+	    \item (Линейность) Если $\xi, \eta$ - простые случайные величины, $c \in \mathbb{R},$ то 
+	 \[\mathbb{E}(с\xi) = с\mathbb{E} \xi \hspace{2em} \mathbb{E} (\xi + \eta) = \mathbb{E} \xi + \mathbb{E} \eta\]
+	    \item (Монотонность) Если $\xi \geqslant 0$, то $\mathbb{E} \xi \geqslant 0$ и $\mathbb{E}\xi = 0 \Leftrightarrow \mathbb{P}(\xi = 0) = 1$ ($\xi = 0$ почти наверное)
+	    \item $|\mathbb{E}\xi| \leqslant \mathbb{E}|\xi|$ 
+	    \item (Неравенство Шварца) $(\mathbb{E} \xi \eta)^2 \leqslant (\mathbb{E} \xi^2) (\mathbb{E} \eta^2)$
+	\end{enumerate}
+	
+	\section{Билет №15. Определение и свойства дисперсии простых случайных величин.}
+	\hspace{\parindent}\textbf{Определение} Дисперсией случайной величины $\xi$ называется число \\
+	\[
+	\mathbb{D} \xi = \mathbb{E} (\xi - \mathbb{E} \xi)^2
+	\]
+	
+	Величина $\sigma_{\xi} = \sqrt{\mathbb{D} \xi}$ называется стандартным (или среднеквадратическим) отклонением.
+	
+	\textbf{Свойства дисперсии.}
+	\begin{enumerate}
+	    \item $\mathbb{D} \xi = \mathbb{E} \xi^2 - (\mathbb{E}\xi)^2; $
+	    \item Для любого вещественного числа c и случайной величины $\xi$  имеют место равенства \\
+	\[
+	\mathbb{D}(c\xi) = c^2\mathbb{D} \xi, \quad \mathbb{D} (\xi + c) = \mathbb{D} \xi ;
+	\]
+	    \item Равенство $\mathbb{D} \xi = 0$ возможно лишь в случае $\mathbb{P} (\xi = \mathbb{E} \xi) = 1$, т.е. случайная величина $\xi$ почти наверное равна постоянной.
+	\end{enumerate}
+	
+	\section{Билет № 16. Теорема о независимости алгебр, порождённых разбиениями.}
+	\hspace{\parindent}\textbf{Определение:} $(\Omega, \mathscr{F}, \mathbb{P})$ -- вероятностное пространство, $\mathscr{A}_1, \ldots, \mathscr{A}_n$ -- алгебра событий, т.е. $\mathscr{A}_k \subset \mathscr{F}, k = 1, \ldots, n$. Будем говорить, что $\mathscr{A}_1, \ldots, \mathscr{A}_n$ независимы, если $\forall A_1 \in \mathscr{A}_1, \ldots, A_n \in \mathscr{A}_n: \mathbb{P}(A_1 \ldots A_n) = \mathbb{P}(A_1) \cdot \ldots \cdot \mathbb{P}(A_n)$.\\
+	
+	\textbf{Теорема:} Пусть $(\Omega, \mathscr{F}, \mathbb{P})$ -- вероятностное пространство и $\mathscr{A}_1, \ldots, \mathscr{A}_n$, которые порождены разбиениями $\mathscr{D}_1, \ldots, \mathscr{D}_n$, т.е. $\mathscr{A}_1 = \mathscr{A}(\mathscr{D}_1), \ldots, \mathscr{A}_n = \mathscr{A}(\mathscr{D}_n)$. Тогда $\mathscr{A}_1, \ldots, \mathscr{A}_n$ независимы $\Leftrightarrow \forall D_1 \in \mathscr{D}_1, \ldots, D_n \in \mathscr{D}_n: \mathbb{P}(D_1 \ldots D_n) = \mathbb{P}(D_1) \cdot \ldots \mathbb{P}(D_n)$
+	
+	\section{Билет № 17. Независимость случайных величин и свойства математического ожидания и дисперсии, связанных с независимостью.}
+	\hspace{\parindent} \textbf{Определение:} $\xi_1, \ldots, \xi_n$, определённые на $(\Omega, \mathscr{F}, \mathbb{P})$, называются независимыми, если независимы алгебры $\mathscr{A}_{\xi_1}, \ldots, \mathscr{A}_{\xi_n}$.\\
+	
+	\textbf{Замечание:} $\xi_1, \ldots, \xi_n$ -- простые независимые величины. $\varphi_1: \mathbb{R} \rightarrow \mathbb{R}, \ldots, \varphi_n: \mathbb{R} \rightarrow \mathbb{R}$. $\eta_1 = \varphi_1(\xi_1), \ldots, \eta_n = \varphi_n(\xi_n) \Rightarrow \eta_1, \ldots, \eta_n$ независимы.\\
+	
+ 	\textbf{Теорема:} \textit{Пусть $\xi = \sum\limits_{i = 1}^n x_i \mathbbold{1}_{D_i}, \eta = \sum\limits_{j = 1}^n y_j \mathbbold{1}_{H_j}  $ - независимые случайные величины. Тогда} 
+	\[
+	\mathbb{E}\xi \eta = \mathbb{E} \xi \cdot \mathbb{E} \eta, \quad \mathbb{D} (\xi + \eta) = \mathbb{D} \xi + \mathbb{D} \eta .
+	\]
+	
+	\textbf{Замечание:} $\xi_1, ..., \xi_n$ - простые независимые случайные величины $\Rightarrow$\\
+	\[
+	\mathbb{E}(\xi_1 \,  ... \,  \xi_n) = (\mathbb{E}\xi_1) \, ... \,  (\mathbb{E}_n\xi_n)
+	\]
+	\[
+	\mathbb{D}(\xi_1 + ... + \xi_n) = \mathbb{D}\xi_1 + ... + \mathbb{D}_n\xi_n
+	\]
+	
+	\section{Билет № 18. Целочисленные случайные величины и свойства производящих функций.}
+	\hspace{\parindent}\textbf{Определение} Пусть случайная величина $\xi$ принимает счётное число значений: $\mathbb{P}(\xi = x_k) = p_k, k = 1, 2, ... .$ Будем говорить, что для $\xi$ определено математическое ожидание, если сходится числовой ряд $\sum\limits_{k = 1}^\infty |x_k|p_k$. В этом случае определяется \\
+	\[
+	\mathbb{E} \xi = \sum\limits_{k = 1}^\infty x_k p_k.
+	\]
+	
+	Дискретную случайную величину $\xi$, принимающую только целые неотрицательные значения, называют \textit{целочисленной} случайной величиной. Её распределение вероятностей $\mathbb{P}(\xi = k) = p_k, k = 0, 1, 2, ... ,$ удобно представлять \textit{производящей функцией}
+	\[
+	g_{\xi}(x) := \mathbb{E}x^{\xi} = \sum\limits_{k = 0}^\infty p_k x^k.
+	\]
+	
+	\textbf{Свойства производящих функций:}
+	\begin{enumerate}
+	    \item $g_{\xi}(x)$ непрерывна на $[-1; 1]$ и $g_{\xi}(1) = 1$
+	    \item $g_{\xi}(x)$ бесконечно дифференцируема на $(-1; 1)$ и 
+	    \[\dfrac{1}{k!}g_{\xi}^{(k)}(0) = p_k \]
+	    \item $\xi_1, \ldots, \xi_n$ -- независимые целочисленные случайные величины и $S_n = \xi_1 + \ldots + \xi_n$, тогда производящая функция
+	    \[g_{S_n} = \prod_{k=1}^n g_{\xi_k}(x)\]
+	\end{enumerate}
+	
+	\section{Билет № 19. Теорема о случайной сумме независимых целочисленных случайных величин.}
+	\hspace{\parindent}\textbf{Теорема:} Пусть $\nu, \xi_1, \xi_2 \ldots $ - независимые целочисленные случайные величины, при этом $\xi_1, \ldots, \xi_n$ одинаково распределены и $g_{\xi}(x)$ - их производящая функция. Тогда $S_{\nu} = \xi_1 + ... + \xi_{\nu}$ имеет производную функцию:
+	\[
+	g_{S_{\nu}}(x) = g_{\nu}(g_{\xi}(x))
+	\]
+
+\section{Билет №20. Совместные распределения простых случайных величин и условие независимости.}
+\hspace{\parindent}\textbf{Определение:} Случайная величина $\xi$ называется простой, если она принимает лишь конечное число значений.
+\vspace{5mm}
+
+Пусть случайные величины $\xi$  и $\eta$ разбивают пространство событий $\Omega$ на атомы D$_{i}$ и H$_{j}$, $i = 1, \dots , n; j = 1, \dots , m$ соответственно. Разбиения $\mathscr{D_{\xi}} = \{\text{D}_{1}, \dots , \text{D}_{n}\}$, $\mathscr{D_{\eta}} = \{\text{H}_{1}, \dots , \text{H}_{m}\}$. Совместное распределение $\mathbb{P}_{\xi , \eta} (x_{i}, y_{j}) = \mathbb{P} (\xi = x_{i}, \eta = y_{j}) = \mathbb{P} (\text{D}_{i}\text{H}_{j}) = p_{ij}$.
+
+В этом случае мы можем составить таблицу совместного распределения:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\diaghead(-1,1){\hskip0.5cm}%
+		%^^A{\theadfont Diag ColuDiag Column}%^^A
+		{$\xi$}{$\eta$} & $y_{1}$  & $y_{2}$  & $\ldots$ & $y_{m}$  \\ \hline
+		$x_{1}$  & $p_{11}$ & $p_{12}$ & $\ldots$ & $p_{1m}$ \\ \hline
+		$x_{2}$  & $p_{21}$  & $p_{22}$ & $\ldots$ & $p_{2m}$ \\ \hline
+		$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ \\ \hline
+		$x_{n}$  & $p_{n1}$ & $p_{n2}$ & $\ldots$ & $p_{nm}$ \\ \hline
+	\end{tabular}
+\end{table}
+
+Совместное разбиение $\mathscr{D_{\xi , \eta}} = \{\text{D}_{i}\text{H}_{j}\}$, $i = 1, \dots , n; j = 1, \dots , m$.
+
+Очевидно, что по построению данной таблицы $\sum\limits_{i,j}p_{ij} = 1$.
+
+Также из этой таблицы в каждой строке и каждом столбце соответственно можно видеть:
+\begin{equation*}
+	\mathbb{P_{\xi}}(x_{i}) = \sum_{j = 1}^{m}p_{ij}, \hspace{15mm} \mathbb{P_{\eta}}(y_{j}) = \sum_{i = 1}^{n}p_{ij}.
+\end{equation*}
+
+Предположим, что у нас есть некая функция $\varphi (\xi , \eta)$, $\varphi$: $\mathbb{R}^2 \rightarrow \mathbb{R}$. Тогда:
+\begin{equation*}
+	\varphi (\xi , \eta) = \sum_{i = 1}^{n}\sum_{j = 1}^{m}\varphi (x_{i}, y_{j})\mathbbold{1}_{\text{D}_{i}\text{H}_{j}}.
+\end{equation*}
+
+\textbf{Определение:} Пусть $(\Omega , \mathscr{F} , \mathbb{P})$ - вероятностное пространство, а $\mathscr{A}_{1}, \dots ,\mathscr{A}_{n}$ - алгебры событий. Будем говорить, что эти алгебры независимы, если $\forall A_{1} \in \mathscr{A}_{1}, \dots , A_{n} \in \mathscr{A}_{n} \longmapsto \mathbb{P} (A_{1} ... A_{n}) = \mathbb{P} (A_{1})\cdot ...\cdot\mathbb{P} (A_{n})$.  
+\vspace{5mm}
+
+\textbf{Определение:} Случайные величины $\xi_{1}, \dots ,\xi_{n}$, определенные на вероятностном пространстве $(\Omega , \mathscr{F} , \mathbb{P})$, называются независимыми, если независимы алгебры $\mathscr{A}_{\xi_{1}}, \dots , \mathscr{A}_{\xi_{n}}$.\\
+
+\textbf{Теорема:} (Условие независимости)
+
+Пусть $(\Omega , \mathscr{F} , \mathbb{P})$ - вероятностное пространство и $\mathscr{A}_{1}, \dots ,\mathscr{A}_{n}$ порождены разбиениями $\mathscr{D}_{1}, \dots ,\mathscr{D}_{n}$ соответственно. Тогда:
+\vspace{5mm}
+
+$\left[\mathscr{A}_{1}, \dots ,\mathscr{A}_{n} - \text{независимы}\right] \Longleftrightarrow [\forall \text{D}_{1} \in \mathscr{D}_{1}, \dots , \text{D}_{n} \in \mathscr{D}_{n} \longmapsto$ \newline 
+\indent $\longmapsto\mathbb{P} (\text{D}_{1}\dots \text{D}_{n}) = \mathbb{P} (\text{D}_{1})\cdot ...\cdot \mathbb{P} (\text{D}_{n})].$
+
+\section{Билет №21. Ковариация и коэффициент корреляции, их свойства.}
+\hspace{\parindent}\textbf{Определение:} Пусть $\xi$ и $\eta$ — две случайные величины, определенные на одном вероятностном пространстве. Под ковариацией этих случайных величин понимается число:
+
+\begin{equation*}
+	\text{cov}(\xi , \eta) = \mathbb{E}(\xi - \mathbb{E}\xi)(\eta - \mathbb{E}\eta).
+\end{equation*} 
+
+\textbf{Определение:} Под коэффициентом корреляции понимается число:
+
+\begin{equation*}
+	\rho(\xi , \eta) = \frac{\text{cov}(\xi , \eta)}{\sqrt{\mathbb{D}\xi}\cdot\sqrt{\mathbb{D}\eta}}.
+\end{equation*}
+
+\textbf{Свойства ковариации и коэффициента корреляции:}
+
+\begin{enumerate}
+    \item $\text{cov}(\xi , \eta) = \mathbb{E}\xi\eta - \mathbb{E}\xi\mathbb{E}\eta$;
+    \item Если $\xi$ и $\eta$ независимы, то $\text{cov}(\xi , \eta) = 0$;
+    \item $|\rho(\xi , \eta)| \leqslant 1$ и $|\rho(\xi , \eta)| = 1 $ в том и только том случае, если \\$\mathbb{P}(\eta = a\xi + b) = 1$ для некоторых $a, b \in \mathbb{R}$.
+\end{enumerate}
+
+\textbf{Определение:} Случайные величины $\xi$ и $\eta$ называются некоррелированными, если $\text{cov}(\xi , \eta) = 0$.
+
+\section{Билет №22. Ковариационная матрица и её свойства.}
+\hspace{\parindent}\textbf{Определение:} Пусть $\xi_{1},\dots,\xi_{n}$ — случайные величины, определенные на одном вероятностном пространстве. Ковариационной матрицей называют $\mathbb{V} = (b_{ij})$, где $b_{ij} = \text{cov}(\xi_{i} , \xi_{j})$. При $i = j$ получаем $b_{ii} = \mathbb{D}\xi_{i}$. То есть сама матрица выглядит вот так:
+
+\begin{equation*}
+	\mathbb{V} = \begin{pmatrix}
+		\mathbb{D}\xi_{1} & \text{cov}(\xi_{1} , \xi_{2})  & \ldots & \text{cov}(\xi_{1} , \xi_{n})\\
+		
+		\text{cov}(\xi_{2} , \xi_{1}) & \mathbb{D}\xi_{2}  & \ldots & \text{cov}(\xi_{2} , \xi_{n})\\
+		
+		\vdots & \vdots & \ddots & \vdots \\
+		
+		\text{cov}(\xi_{n} , \xi_{1}) & \text{cov}(\xi_{n} , \xi_{2})  & \ldots & \mathbb{D}\xi_{n}\\
+	\end{pmatrix}.
+\end{equation*}
+
+\textbf{Свойства:}
+
+\begin{enumerate}
+    \item $\mathbb{V}$ - симметрическая матрица (т.к. $\text{cov}(\xi_{i} , \xi_{j}) = \text{cov}(\xi_{j} , \xi_{i})$);
+    \item $\mathbb{V}$ положительно определена, т.е. $\forall \textbf{x} = \begin{pmatrix}
+	x_{1} \\ x_{2} \\ \vdots \\x_{n}
+\end{pmatrix} \neq \textbf{0} \longmapsto  \textbf{x}^T\mathbb{V}\textbf{x} \geqslant 0$. 
+\end{enumerate}
+
+\textbf{Замечание:} Симметричность и неотрицательная определенность являются характеристическими свойствами ковариационной матрицы.
+
+\section{Билет №23. Задача линейного оценивания. Уравнение регрессии.}
+
+\hspace{\parindent} Пусть $\xi$ и $\eta$ — две случайные величины, из которых лишь $\xi$ является наблюдаемой. Если $\xi$ и $\eta$ коррелированы, то естественно предположить, что знание значения $\xi$  позволит получить некоторые выводы о значениях ненаблюдаемой случайной величины $\eta$. 
+\vspace{5mm}
+
+\textbf{Определение:} Всякую функцию $\varphi(x)\text{: }\mathbb{R}\rightarrow\mathbb{R}$ в контексте этой задачи называют оценкой для $\eta$.
+\vspace{5mm}
+
+\textbf{Определение:}  Оценка $\varphi^{*}$ называется оптимальной в смысле среднеквадратического отклонения в классе оценок $\Phi$, если:
+
+
+\begin{equation*}
+	\mathbb{E}(\eta - \varphi^{*}(\xi))^2 = \inf\limits_{\varphi \in \Phi}\mathbb{E}(\eta - \varphi(\xi))^2.
+\end{equation*}
+
+Оказывается, что для отыскания оптимальной оценки в классе линейных функций $\varphi(x) = ax + b$ достаточно знания ковариации $\text{cov}(\xi , \eta)$.
+
+Оптимальной оценкой в классе линейных функций является:
+
+\begin{equation*}
+	\eta^{*} = \varphi^{*}(\xi) = \mathbb{E}\eta + \frac{\text{cov}(\xi , \eta)}{\mathbb{D}\xi}(\xi - \mathbb{E}\xi).
+\end{equation*}
+
+Это равенство называют также \textbf{уравнением регрессии} $\eta$ на $\xi$.
+\vspace{5mm}
+
+\textbf{Замечание:} Среднеквадратическая ошибка линейного оценивания
+вычисляется по формуле:
+
+\noindent $\mathbb{E}(\eta - \eta^{*})^2 = \mathbb{E}\left((\eta - \mathbb{E}\eta) - \frac{\text{cov}(\xi , \eta)}{\mathbb{D}\xi}(\xi - \mathbb{E}\xi)\right)^2 = \mathbb{D}\eta 	- 2 \frac{(\text{cov}(\xi , \eta))^2}{\mathbb{D}\xi} + \frac{(\text{cov}(\xi , \eta))^2}{\mathbb{D}\xi} = \mathbb{D}\eta (1 - (\rho(\xi , \eta))^2).$
+\vspace{5mm}
+
+Отсюда видно, что оценка тем точнее, чем ближе коэффициент корреляции $\rho(\xi , \eta)$  по модулю к единице.
+
+\section{Билет №24. Борелевская сигма-алгебра и общее определение случайной величины.}
+
+\hspace{\parindent}\textbf{Определение:} Класс $\mathscr{A}$ подмножеств $\Omega$ называется алгеброй подмножеств $\Omega$, если он замкнут относительно конечного числа теоретико-множественных операций.
+\vspace{5mm}
+
+\textbf{Определение:} Класс $\mathscr{A}$ подмножеств $\Omega$ называется $\sigma$-алгеброй, если
+он является алгеброй и замкнут относительно счетных объединений.
+
+\vspace{5mm}
+
+\textbf{Замечание:} Класс $\mathscr{A}$ подмножеств $\Omega$ является $\sigma$-алгеброй в том и только том случае, если выполнены следующие условия:
+
+\noindent 1) $\Omega \in \mathscr{A}$;
+
+\noindent 2) Если $A \in \mathscr{A}$, то $\bar{A} \in \mathscr{A}$;
+
+\noindent 3) Если ${A_{n}} \subset \mathscr{A}$, то $\bigcup\limits_{n = 1}^{\infty} A_{n} \in \mathscr{A}$.
+\vspace{5mm}
+
+\textbf{Определение:} Пусть $\mathscr{K}$ — некоторый класс подмножеств $\Omega$. Тогда под $\sigma(\mathscr{K})$ будем понимать $\sigma$-алгебру подмножеств $\Omega$, которая удовлетворяет следующим условиям:
+
+\noindent 1) $\mathscr{K} \subset \sigma(\mathscr{K})$;
+
+\noindent 2) Если $\mathscr{F}$ - $\sigma$-алгебра подмножеств $\Omega$ и $\mathscr{K} \subset \mathscr{F}$, то $\sigma(\mathscr{K}) \subset \mathscr{F}$.
+\vspace{5mm}
+
+\textbf{Определение:} В силу условия 2) $\sigma$-алгебру $\sigma(\mathscr{K})$ называют минимальной $\sigma$-алгеброй, порожденной $\mathscr{K}$.
+\vspace{5mm}
+
+\textbf{Замечание:} $\sigma(\mathscr{K})$ существует и единственна.
+\vspace{5mm}
+
+\textbf{Определение:} Пусть $\Omega = \mathbb{R}$ (или $\mathbb{R}^n$), а $\mathscr{K}$ - класс всех открытых множеств. Тогда $\sigma(\mathscr{K}) = \mathscr{B}(\mathbb{R})$ (или $\mathscr{B}(\mathbb{R}^n)$) называется борелевской $\sigma$-алгеброй подмножеств $\mathbb{R}$ (или $\mathbb{R}^n$).
+\vspace{5mm}
+
+\textbf{Определение:} Множества $B \in \mathscr{B}$ называются борелевскими множествами.
+\vspace{5mm}
+
+$\mathscr{B}$ содержит все открытые множества, все замкнутые множества и все их счетные пересечения и объединения.
+\vspace{5mm}
+
+\textbf{Замечание:} Если $\mathscr{T}$ -  класс полуинтервалов вида $(-\infty ; x]$ (или $(-\infty ; x)$, $[x; +\infty)$, $(x; +\infty)$), где $x \in \mathbb{R}$, то $\sigma(\mathscr{T}) = \mathscr{B}$.
+\vspace{5mm}
+
+\textbf{Определение:} Пусть $(\Omega , \mathscr{F} , \mathbb{P})$ - вероятностное пространство. Отображение $\xi$: $\Omega \rightarrow \mathbb{R}$ называется случайной величиной, если:
+\begin{equation*}
+	\forall B \in \mathscr{B} \longmapsto \xi^{-1}(B) = \{w: \xi (w) \in B\} \in \mathscr{F}.
+\end{equation*}
+
+\textbf{Предложение:} Пусть $(\Omega , \mathscr{F} , \mathbb{P})$ - вероятностное пространство и $\xi$: $\Omega \rightarrow \mathbb{R}$. Тогда:
+
+\begin{equation*}
+	\left[\xi - \text{независимая случайная величина}\right] \Longleftrightarrow \left[\forall x \in \mathbb{R} \longmapsto \{w: \xi (w) \leqslant x\} \in \mathscr{F}\right].
+\end{equation*}
+
+\textbf{Определение:} Пусть $\xi$ - случайная величина, определенная на $(\Omega , \mathscr{F} , \mathbb{P})$. Тогда $\sigma (\xi) = \{\xi^{-1}(B): B \in \mathscr{B}\}$ называется под-$\sigma$-алгеброй $\mathscr{F}$ (или же $\sigma$-алгебра, порожденная $\xi$).
+\vspace{5mm}
+
+\textbf{Определение:} Случайные величины $\xi_{1}, \dots , \xi_{n}$, определенные на $(\Omega , \mathscr{F} , \mathbb{P})$ называются независимыми, если порожденные ими алгебры $\sigma (\xi_{1}), \dots , \sigma (\xi_{n})$ независимы.
+
+\section{Билет №25. Борелевские функции.}
+
+\hspace{\parindent}\textbf{Определение:} Функция $\varphi$: $\mathbb{R} \rightarrow \mathbb{R}$ называется борелевской, если:
+\begin{equation*}
+	\forall B \in \mathscr{B} \longmapsto \varphi^{-1}(B) \in \mathscr{B}.
+\end{equation*}
+Другими словами, для любого борелевского множества $B$ прообраз $\varphi^{-1}(B)$ также является борелевским множеством.
+\vspace{5mm}
+
+\textbf{Предложение:} Пусть $\xi$ - случайная величина, определенная на $(\Omega , \mathscr{F} , \mathbb{P})$, а $\varphi$: $\mathbb{R} \rightarrow \mathbb{R}$ - борелевская функция. Тогда $\eta = \varphi (\xi) = \varphi \circ \xi$ - случайная величина.
+
+\section{Билет №26. Аппроксимационная теорема и определение математического ожидания как интеграла Лебега.}
+
+\hspace{\parindent}\textbf{Теорема:} (Аппроксимационная)
+\vspace{3mm}
+
+Пусть $\xi \geqslant 0$ - случайная величина, определенная на $(\Omega , \mathscr{F} , \mathbb{P})$. Тогда существует последовательность $\{\xi_{n}\}_{n = 1}^{\infty}$ простых неотрицательных случайных величин такая, что $\xi_{n} \nearrow \xi$ (монотонно возрастая, стремится к $\xi$) и $\sigma (\xi_{n}) \subset \sigma(\xi)$. 
+\vspace{5mm}
+
+\textbf{Определение:} Пусть $\xi$ - неотрицательная случайная величина и $\xi_{n} \nearrow \xi$, где $\{\xi_{n}\}_{n = 1}^{\infty}$ — последовательность простых неотрицательных случайных величин. Тогда математическое ожидание $\xi$ определяется как:
+\begin{equation*}
+	\mathbb{E}\xi = \lim\limits_{n\rightarrow\infty} \mathbb{E}\xi_{n},
+\end{equation*}
+\noindent если этот предел конечен.
+\vspace{5mm}
+
+\textbf{Замечание:} Для произвольной случайной величины $\xi$ рассматриваются две неотрицательные случайные величины:
+\begin{equation*}
+	\xi^{+} = \text{max}\{\xi, 0\}, \hspace{15mm} \xi^{-} = \text{max}\{-\xi, 0\}.
+\end{equation*}
+
+\noindent В случае, когда $\mathbb{E}\xi^{+}$ и $\mathbb{E}\xi^{-}$ конечны, будем говорить, что $\xi$ имеет конечное математическое ожидание:
+\begin{equation*}
+	\mathbb{E}\xi = \mathbb{E}\xi^{+} - \mathbb{E}\xi^{-}.
+\end{equation*}
+
+Введенное таким образом математическое ожидание сохраняет основные свойства, которые были установлены для простых случайных величин.
+
+\vspace{5mm}
+В действительности, определение математического ожидания является интегралом Лебега от функции $\xi$: $\Omega \rightarrow \mathbb{R}$ по мере $\mathbb{P}$, то есть:
+\begin{equation*}
+	\mathbb{E}\xi = \int\limits_{\Omega}\xi (w) \mathbb{P}(dw) = \int\limits_{\Omega}\xi (w) d\mathbb{P}(w),
+\end{equation*}
+\noindent то есть интегрирование идет по всем событиям $w \in \Omega$.
+
+
+С каждой случайной величиной $\xi$ ассоциируется новое вероятностное пространство $(\mathbb{R} , \mathscr{B} , \mathbb{P_{\xi}})$, и мы можем перенести все вычисления на него. То есть мы совершаем переход: $(\Omega , \mathscr{F} , \mathbb{P}) \rightarrow (\mathbb{R} , \mathscr{B} , \mathbb{P_{\xi}})$.
+
+Тогда математическое ожидание можно считать как:
+\begin{equation*}
+	\mathbb{E}\xi = \int\limits_{\mathbb{R}}x d\mathbb{P_{\xi}}(x).
+\end{equation*}
+
+
+Кроме того, если $\varphi$: $\mathbb{R} \rightarrow \mathbb{R}$ - борелевская функция, то:
+\begin{equation*}
+	\mathbb{E}\varphi(\xi) = \int\limits_{\mathbb{R}}\varphi (x) d\mathbb{P_{\xi}}(x).
+\end{equation*}
+
+\section{Билет 27. Неравенства Маркова и Чебышева.}
+
+\hspace{\parindent}\textbf{Теорема:} Пусть случайная величина $\xi$ имеет конечную дисперсию. Тогда для любого $\varepsilon > 0$ выполняются следующие неравенства:
+
+\begin{center}
+	\it{Неравенство Маркова}
+\end{center}
+\begin{equation*}
+	\mathbb{P}(|\xi| \geqslant \varepsilon) \leqslant \frac{\mathbb{E}|\xi|}{\varepsilon}
+\end{equation*}
+
+\begin{center}
+	\it{Неравенство Чебышева}
+\end{center}
+\begin{equation*}
+	\mathbb{P}(|\xi - \mathbb{E}\xi| \geqslant \varepsilon) \leqslant \frac{\mathbb{D}\xi}{\varepsilon^2}
+\end{equation*}
+
+\section{Билет 28. Характеристические функции и их свойства.}
+
+\hspace{\parindent}\textbf{Определение:} Характеристической функцией случайной величины $\xi$ называется:
+	\[
+	h_\xi(t) = \mathbb{E}e^{it\xi}
+	\]
+	
+	\textbf{Свойства характеристических функций:}
+	\begin{enumerate}
+		\item $|h_\xi(t)|\leqslant1$ и $h_\xi(0) = 1$
+		\item $h_\xi(-t) = \overline{h_\xi(t)}$
+		\item $h_{a\xi+b}(t) = e^{itb}h_\xi(at)$
+		\item $h_{\xi}(t)$ непрерывна на $\mathbb{R}$ (равномерно непрерывна)
+		\item Если $\xi_1, \dots, \xi_n$ -- независимые случайные величины и $S_n = \xi_1+\dots+\xi_n$, то $h_{S_n}(t) = \prod\limits_{k=1}^nh_{\xi_k}(t)$
+		\item Если $\mathbb{E}|\xi|^n < \infty$, то $h_\xi(t)$ имеет производные до n-го порядка включительно и
+		\[\mathbb{E}\xi^n = \frac{1}{i^n}h_\xi^{(n)}(0) \]
+		\item Если $\exists h_{\xi}^{(2k)}(0)$, тогда $\exists \mathbb{E}\xi^{2k} < \infty$
+	\end{enumerate}
+	
+	\section{Билет 29. Характеристические функции показательного и нормального распределения.}
+	
+	\vspace{5mm}
+	
+	Характеристические функции для часто встречающихся распределений:
+	
+	\begin{itemize}
+		\item Вырожденное распределение $\mathbb{P}(\xi = a) = 1$. \\$h_\xi(t) = \mathbb{E}e^{it\xi} = e^{iat}$
+		\item Равномерное на отрезке распределение с плотностью
+		\[
+		f_\xi(x) = \frac{1}{b-a}\mathbbold{1}_{[a,b]}(x)
+		\]
+		В случае $t \neq 0$ имеем
+		\[
+		h_\xi(t) = \frac{e^{itb} - e^{ita}}{it(b-a)}
+		\]
+		При $t = 0$ имеем $h_\xi(0) = 1$.
+		\item Экспоненциальное распределение зависит от параметра $\lambda > 0$ и определяется плотностью
+		\[
+		f_\xi(x) = \lambda e^{-\lambda x}\mathbbold{1}_{[0;+\infty)}(x)
+		\]
+		\[
+		h_\xi(t) = \frac{\lambda}{\lambda - it}
+		\]
+		\item Нормальное распределение, определяемое плотностью
+		\[
+		f_\xi(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-(x-a)^2/2\sigma^2}
+		\]
+		\[
+		h_\xi(t) = e^{iat}e^{-\sigma^2t^2/2}
+		\]
+		\item Целочисленная случайная величина с производящей функцией $g_\xi(x)$ имеет характеристическую функцию $h_\xi(t) = g_\xi(e^{it})$
+	\end{itemize}
+	
+	\section{Билет 30. Определение и критерий сходимости почти наверное для последовательности случайных величин.}
+	
+	\hspace{\parindent}\textbf{Определение:} Пусть $\xi, \xi_1, \ldots$ -- случайные величины, определённые на $(\Omega, \mathscr{F}, \mathbb{P})$. Будем говорить, что $\xi_n \xrightarrow{\text{п.н.}} \xi$, если \[\mathbb{P}(\{\lim\limits_{n \to \infty} \xi_n(\Omega) = \xi(\Omega)\}) = 1\]
+	
+	\textbf{Критерий:} Пусть $\xi, \xi_1, \xi_2, \dots$ -- случайные величины, определенные на ($\Omega, \mathscr{F}, \mathbb{P}$) и для $\varepsilon>0$ $A_n^\varepsilon = \{\omega:|\xi_n(\omega) -\xi(\omega) |\geqslant\varepsilon\}$, тогда
+	\[
+	\xi_n \xrightarrow{\text{п.н.}} \xi \Leftrightarrow \mathbb{P}(\varlimsup A_n^\varepsilon) = 0 \text{ }\forall \varepsilon>0
+	\]
+	
+	\section{Билет 31. Законы больших чисел Чебышева и Бернулли.}
+	
+	\hspace{\parindent}\textbf{Теорема [Закон больших чисел Чебышева]:} Пусть $\xi_1, \xi_2, \dots$ — последовательность независимых случайных величин, для которых $\mathbb{D}\xi_n \leqslant C, n =
+	1, 2, . . .,$ при некотором $C > 0$. Тогда для любого $\varepsilon > 0$ выполняется следующее
+	предельное соотношение
+	\[
+	\lim\limits_{n\to\infty}\mathbb{P}\left(\left|\frac{S_n}{n} - \frac{\mathbb{E}S_n}{n}\right| \geqslant \varepsilon \right) = 0
+	\]
+	где $S_n = \xi_1+\dots+\xi_n$
+	
+	\textbf{Теорема:} [Закон больших чисел Бернулли] Пусть $S_n$ -- число успехов в серии из $n$ независимых испытаний с вероятностью $p, 0 < p < 1$, в отдельном испытании. Тогда
+	для любого $\varepsilon > 0$ выполняется соотношение
+	\[
+	\lim\limits_{n\to\infty} \mathbb{P}\left(\left|\frac{S_n}{n} - p\right| \geqslant \varepsilon \right) = 0
+	\]
+	
+	\section{Билет 32. Усиленный закон больших чисел.}
+	
+	\hspace{\parindent}\textbf{Теорема:} Пусть $\xi_1,  \xi_2,  \dots$ -- последовательность независимых, одинаково распределенных случайных величин с $\mathbb{E}\xi_k = a$, $\mathbb{D}\xi_k = \sigma^2$. Тогда
+	\[
+	\frac{S_n}{n} \xrightarrow{\text{п.н.}} a \text{ при } n\to\infty
+	\]
+	где $S_n = \xi_1+\dots+\xi_n$
+	
+	\section{Билет 33. Сходимость по распределению, центральная предельная теорема.}
+	
+	\hspace{\parindent}\textbf{Определение:} Пусть $F, F_1, F_2, \dots$ -- функции распределения. Будем говорить, что $F_n \Rightarrow F$ (слабо сходится), если 
+	\[
+	\lim\limits_{n\to\infty} F_n(x) = F(x) 
+	\]
+	в каждой точке непрерывности функции $F$.
+	
+	\vspace{5mm}
+	
+	\textbf{Определение:} Будем говорить, что $\xi_n \xrightarrow{d} \xi$ (сходится по распределению), если $F_{\xi_n} \Rightarrow F_{\xi}$.
+	\vspace{5mm}
+	
+	\textbf{Теорема [Центральная предельная теорема]:} Пусть $\xi_1, \xi_2, \dots$ -- последовательность независимых, одинаково распределенных случайных величин с $\mathbb{E}\xi_k = a$, $\mathbb{D}\xi_k = \sigma^2$. $S_n = \xi_1+\dots+\xi_n$. Тогда $\forall x\in\mathbb{R}$ имеет место следующее предельное соотношение
+	\[
+	\lim\limits_{n\to\infty}\mathbb{P}\left(\frac{S_n - na}{\sigma \sqrt{n}} \leqslant x  \right) = \frac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x e^{-u^2/2}du = \Phi(x)	
+	\]
+	
+\section{Билет №34. Закон больших чисел Хинчина.}
+
+\hspace*{\parindent} \textbf{Теорема [Закон больших чисел Хинчина]:} Пусть $\xi_1, \xi_2, \ldots$ -- независимые одинаково распределенные случайные величины с конечным $\mathbb{E} \xi_k = a$. Тогда для $S_n = \xi_1 + \ldots + \xi_n$ имеет место предельное соотношение
+\[\dfrac{S_n}{n} \xrightarrow{\mathbb{P}} a \]
+
+\section{Билет №35. Теорема Бернштейна о приближении непрерывной функции полиномами.}
+
+\hspace*{\parindent} \textbf{Теорема [Бернштейна]:} Пусть $f(x)$ -- непрерывная функция на $[0; 1]$. Тогда 
+\[\max_{x \in [0; 1]} |B_n(x; f) - f(x)| \xrightarrow[n \to \infty]{} 0, \]
+где 
+\[B_n(x; f) = \sum_{k=0}^{n} C_{n}^{k} f \left( \tfrac{k}{n} \right) x^k (1-x)^{n-k} \]
+
+\section{Билет №36. Условие марковости и однородности цепи в терминах переходных вероятностей.}
+
+\[t = 1, 2, \ldots, T\]
+\[E = {e_1, \ldots, e_r} \]
+
+Цепи Маркова -- системы, у которых вероятности перехода из одного состояния в другое в данный момент времени не зависят от того, как вела себя система в предыдущие моменты времени.
+\[\omega = (\omega_0, \omega_1, \ldots, \omega_T ),\]
+где $\omega_t = i$, если система в момент времени $t$ находилась в состоянии $e_i$.
+\begin{multline*}
+	\mathbb{P}(\omega) = \mathbb{P}(\omega_0 = i_0, \omega_1 = i_1, \ldots, \omega_T = i_T) = \\ = \mathbb{P}(\omega_0 = i_0)  \mathbb{P}(\omega_1 = i_1 | \omega_0 = i_0) \cdot \ldots \cdot \mathbb{P}(\omega_T = i_T | \omega_0 = i_0, \ldots, \omega_{T-1} = i_{T-1})
+\end{multline*}
+
+\textbf{Условие марковости (независимость от прошлого):} для любых двух моментов времени $s<t$
+\[\mathbb{P}(\omega_t = j | \omega_0 = i_0, \ldots, \omega_{s-1} = i_{s-1}, \omega_s = i) = \mathbb{P}(\omega_t = j | \omega_s = i) \]
+
+\textbf{Однородность:}
+\[\mathbb{P}(\omega_{s+t} = j | \omega_s = i) = \mathbb{P}(\omega_t = j | \omega_0 = i) = p_{ij}(t) \]
+
+\textbf{Свойства вероятностей $\mathbf{p_{ij}(t)}$:}
+\begin{enumerate}
+    \item $p_{ij}(t) \geqslant 0$;
+    \item $\sum\limits_{j=1}^{r} p_{ij}(t) = 1$;
+    \item $p_{ij}(0) = \delta_{ij}$.
+\end{enumerate}
+
+\[\Pi(t) = (p_{ij}(t)) \]
+
+$p_{ij}(1) = p_{ij}$ -- переходные вероятности. $\Pi(1) = \Pi$ -- матрица переходных вероятностей.
+
+\section{Билет №37. Уравнение Колмогорова-Чепмена.}
+
+\[\forall s, t \geqslant 0 \hspace*{2em} p_{ij}(s+t) = \sum_{k=1}^{r} p_{ik}(s) \cdot p_{kj}(t) \]
+Это также можно записать в матричном виде
+\[\Pi(s+t) = \Pi(s)\Pi(t) \]
+Поскольку $\Pi(1) = \Pi$, то $\Pi(t) = \Pi^t$.
+
+Удобно записать вектор-строку $\vec{p}(0) = \left( p_1(0), \ldots, p_r(0) \right)$, где $p_i(0)$ -- вероятность того, что в начальный момент времени система находилась в состоянии $i$; и вектор-строку $\vec{p}(t) = \left( p_1(t), \ldots, p_r(t) \right)$, где $p_i(t)$ -- вероятность того, что в момент времени $t$ система находилась в состоянии $i$. Тогда
+\[p_j(t) = \sum_{i=1}^{r} p_i(0) \cdot p_{ij}(t) \]
+Или, в матричном виде:
+\[\vec{p}(t) = \vec{p}(0) \Pi(t) = \vec{p}(0) \Pi^t \]
+
+\section{Билет №38. Теорема о предельных вероятностях марковской цепи.}
+
+\hspace{\parindent}\textbf{Теорема [О предельных вероятностях]:} Пусть при некотором $t_0 > 0$ все элементы матрицы $\Pi^{t_0} = (p_{ij}(t_0))$ являются строго положительными. Тогда $\forall j = 1, \ldots, r$ существует предел
+\[\lim_{t \to \infty} p_{ij}(t) = p_j, \] 
+который не зависит от $i$ и $p_1, \ldots, p_r$ -- единственные решения СЛУ
+\[p_j = \sum_{k=1}^{r} p_k \cdot p_{kj}, \hspace*{2em} \sum_{j=1}^{r} p_j = 1 \]
+
+\section{Билет №39. Вероятность вырождения процесса Гальтона-Ватсона и ее выражение через производящую функцию.}
+
+\[A \text{ -- процесс выродился} \]
+\[A_n = \{\xi_n = 0\} \hspace{2em} A_n \nearrow A \]
+\[\lim_{n \to \infty} \mathbb{P}(A_n) = \mathbb{P}(A) = q \text{ -- вероятность вырождения процесса}\]
+
+\textbf{Теорема:} Пусть $\xi_0 = 1, \xi_1, \xi_2, \ldots$ -- процесс Гальтона-Ватсона с производящей функцией $f(x)$, Тогда вероятность $q$ вырождения процесса
+\[q = \lim_{n \to \infty}f^n(0) \]
+и является наименьшим неотрицательным корнем уравнения $f(x) = x$. 
+\[(f^n(x) = f \circ \ldots \circ f(x) = g_{\xi_n}(x) \text{ -- } n\text{-ая итерация функции } f)\]
+
+\section{Билет №40. Классификация процессов Гальтона-Ватсона и вероятность вырождения.}
+
+\[\mathbb{E}(\xi_1) = m \text{ -- среднее число потомков от одной частицы в следующем поколении} \]
+Процесс называется:
+\begin{itemize}
+	\item докритическим, если $m < 1$;
+	\item критическим, если $m = 1$;
+	\item надкритическим, если $m > 1(m = +\infty)$.
+\end{itemize}
+
+\textbf{Теорема:} Пусть $\xi_0 = 1, \xi_1, \xi_2, \ldots$ -- процесс Гальтона-Ватсона. Тогда, если процесс докритический или критический, то вероятность вырождения $q = 1$. Если процесс надкритический, то $0 \leqslant q < 1$.
+
+\end{document}
